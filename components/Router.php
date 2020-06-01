@@ -34,7 +34,6 @@ class Router {
                 $controllerFile = './controllers/'.$controllerName.'.php';
                 if (file_exists($controllerFile)) {
                     include_once($controllerFile);
-                    require_once('./views/head.php');
                 }
 
                 $controllerObject = new $controllerName;

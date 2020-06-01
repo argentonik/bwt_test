@@ -6,6 +6,7 @@ error_reporting(E_ALL);
 
 // подсключение файлов системы
 require_once('./components/Router.php');
+include_once './components/Db.php';
 
 // вызов роутера
 $router = new Router();
