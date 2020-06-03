@@ -4,7 +4,6 @@
     <div class="col-md-6">
         <div class="card">
             <header class="card-header">
-                <a href="/signIn" class="float-right btn btn-outline-primary mt-1">Войти</a>
                 <h4 class="card-title mt-2">Регистрация</h4>
             </header>
             <article class="card-body">
@@ -64,5 +63,9 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    loadCSS("/template/css/user/registration.css");
+</script>
 
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/views/footer.php' ?>
