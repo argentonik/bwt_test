@@ -23,6 +23,41 @@ class User
         return $r;
     }
 
+    public static function auth($user) {
+        session_start();
+        $_SESSION['user'] = $user;
+    }
+
+    public static function checkLogged() {
+        session_start();
+        if (isset($_SESSION['user'])) {
+            return $_SESSION['user'];
+        }
+
+        return false;
+    }
+
+    public static function checkUserData($firstName, $email) {
+        $db = Db::getConnection();
+
+        $sql = 'SELECT * FROM users WHERE firstName = :firstName AND email = :email';
+
+        $result = $db->prepare($sql);
+        $result->bindParam(':firstName', $firstName, PDO::PARAM_STR);
+        $result->bindParam(':email', $email, PDO::PARAM_STR);
+        $result->execute();
+
+        $user = $result->fetch();
+        if ($user) {
+            return array(
+                'id' => $user['id'],
+                'name' => $user['firstName']
+            );
+        }
+
+        return false;
+    }
+
     public static function isEmailExists($email) {
         $db = Db::getConnection();
 

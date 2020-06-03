@@ -1,5 +1,7 @@
 <?php
 
+require_once './models/User.php';
+
 class Router {
     private $routes;
 

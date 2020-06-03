@@ -4,7 +4,7 @@
     <div class="col-md-6">
         <div class="card">
             <header class="card-header">
-                <a href="" class="float-right btn btn-outline-primary mt-1">Войти</a>
+                <a href="/signIn" class="float-right btn btn-outline-primary mt-1">Войти</a>
                 <h4 class="card-title mt-2">Регистрация</h4>
             </header>
             <article class="card-body">
@@ -60,7 +60,7 @@
                     </div>
                 </form>
             </article>
-            <div class="border-top card-body text-center">Уже есть аккаунт? <a href="">Войти</a></div>
+            <div class="border-top card-body text-center">Уже есть аккаунт? <a href="/signIn">Войти</a></div>
         </div>
     </div>
 </div>
