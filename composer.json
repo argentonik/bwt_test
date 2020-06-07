@@ -1,0 +1,12 @@
+{
+  "name": "bwt/test",
+  "authors": [
+    {
+      "name": "Marina Parhomenko",
+      "email": "qwertf030915@gmail.com"
+    }
+  ],
+  "require": {
+    "rct567/dom-query": "dev-master"
+  }
+}
