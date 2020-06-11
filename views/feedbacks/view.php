@@ -13,13 +13,6 @@
         ?>
     </div>
     <nav aria-label="Page navigation example">
-<!--        <ul class="pagination">-->
-<!--            <li class="page-item"><a class="page-link" href="#">Назад</a></li>-->
-<!--            <li class="page-item"><a class="page-link" href="/feedbacks/page-1">1</a></li>-->
-<!--            <li class="page-item"><a class="page-link" href="/feedbacks/page-2">2</a></li>-->
-<!--            <li class="page-item"><a class="page-link" href="#">3</a></li>-->
-<!--            <li class="page-item"><a class="page-link" href="#">Вперед</a></li>-->
-<!--        </ul>-->
         <?php echo $pagination->get(); ?>
     </nav>
 </div>

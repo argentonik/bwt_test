@@ -26,9 +26,9 @@ class Feedback
 
         $feedbacksList = array();
 
-        $result = $db->query('SELECT date, firstName, email, report '
+        $result = $db->query('SELECT id, date, firstName, email, report '
             . 'FROM feedbacks '
-            . 'ORDER BY date DESC '
+            . 'ORDER BY id DESC '
             . 'LIMIT '.$limit.' '
             . 'OFFSET '.($offset - 1) * $limit);
         $result->setFetchMode(PDO::FETCH_ASSOC);

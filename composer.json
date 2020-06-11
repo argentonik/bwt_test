@@ -7,6 +7,7 @@
     }
   ],
   "require": {
-    "rct567/dom-query": "dev-master"
+    "rct567/dom-query": "dev-master",
+    "google/recaptcha": "^1.2"
   }
 }

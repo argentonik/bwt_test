@@ -2,3 +2,14 @@
     width: 100%;
     padding: 3rem;
 }
+
+.recaptcha {
+    color: red;
+    margin-top: -10px;
+    margin-bottom: 10px;
+    font-size: 12px;
+}
+
+.g-recaptcha {
+    margin-bottom: 10px;
+}

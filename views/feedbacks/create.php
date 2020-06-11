@@ -32,7 +32,11 @@
                         <?php $errors['report'] ?
                             print '<div class="invalid-feedback">'.$errors['report'].'</div>' : false; ?>
                     </div>
+
                     <div class="g-recaptcha ru" data-sitekey="6LeYCQAVAAAAABgXnFoK-1NWDCSYo7SIpy0ySqG2"></div>
+                    <?php $errors['recaptcha'] ?
+                        print '<div class="recaptcha">'.$errors['recaptcha'].'</div>' : false; ?>
+
                     <div class="form-group">
                         <button type="submit" name="submit" class="btn btn-primary btn-block">Отправить</button>
                     </div>
