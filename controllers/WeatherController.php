@@ -6,7 +6,7 @@ use Rct567\DomQuery\DomQuery;
 
 class WeatherController
 {
-    const URL_FOR_PARSE = 'https://www.gismeteo.ua/weather-zaporizhia-5093/';
+    const URL_FOR_PARSE = 'http://www.gismeteo.ua/city/daily/5093/';
 
     const HOURS_ARRAY = array('0:00', '3:00', '6:00', '9:00', '12:00', '15:00', '18:00', '21:00');
 

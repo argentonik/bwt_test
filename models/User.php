@@ -72,17 +72,32 @@ class User
         return $result->fetchColumn() ? true : false;
     }
 
-    public static function isValidName($name) {
-        return $name && (mb_strlen($name) >= 2);
+    public static function hasErrorsFirstName($name) {
+        if (!$name || mb_strlen($name) < 2) {
+            return 'Имя должно быть не короче 2 символов';
+        } else if (mb_strlen($name) > 20) {
+            return 'Имя должно быть не длиннее 20 символов';
+        }
+        return false;
     }
 
-    public static function isValidEmail($email) {
-        return $email && filter_var($email, FILTER_VALIDATE_EMAIL);
+    public static function hasErrorsLastName($name) {
+        if (!$name || mb_strlen($name) < 2) {
+            return 'Фамилия должна быть не короче 2 символов';
+        } else if (mb_strlen($name) > 20) {
+            return 'Фамилия должна быть не длиннее 20 символов';
+        }
+        return false;
     }
 
-    public static function isValidDate($dateStr) {
+    public static function hasErrorsEmail($email) {
+        return $email && filter_var($email, FILTER_VALIDATE_EMAIL) ? false : 'Введите корректный email';
+    }
+
+    public static function hasErrorsDate($dateStr) {
         // format yyyy-mm-dd
         return $dateStr &&
-            preg_match("/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/", $dateStr);
+            preg_match("/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/", $dateStr) ? false :
+            'Введите дату в формате дд.мм.гггг';
     }
 }
