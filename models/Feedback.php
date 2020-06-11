@@ -21,6 +21,40 @@ class Feedback
         return $r;
     }
 
+    public static function getFeedbacksList($limit, $offset) {
+        $db = Db::getConnection();
+
+        $feedbacksList = array();
+
+        $result = $db->query('SELECT date, firstName, email, report '
+            . 'FROM feedbacks '
+            . 'ORDER BY date DESC '
+            . 'LIMIT '.$limit.' '
+            . 'OFFSET '.($offset - 1) * $limit);
+        $result->setFetchMode(PDO::FETCH_ASSOC);
+
+        $i = 0;
+        while($row = $result->fetch()) {
+            $feedbacksList[$i]['date'] = $row['date'];
+            $feedbacksList[$i]['firstName'] = $row['firstName'];
+            $feedbacksList[$i]['email'] = $row['email'];
+            $feedbacksList[$i]['report'] = $row['report'];
+            $i++;
+        }
+
+        return $feedbacksList;
+    }
+
+    public static function getTotalCountOfFeedbacks() {
+        $db = Db::getConnection();
+
+        $result = $db->query('SELECT count(id) AS count FROM feedbacks');
+        $result->setFetchMode(PDO::FETCH_ASSOC);
+        $row = $result->fetch();
+
+        return $row['count'];
+    }
+
     public static function hasErrorsReport($report) {
         if (!$report || mb_strlen($report) < 10) {
             return 'Длина отзыва должна быть больше 10 символов';

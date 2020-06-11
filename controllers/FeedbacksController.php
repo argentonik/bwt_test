@@ -1,18 +1,19 @@
 <?php
 
 require_once './models/Feedback.php';
+require_once './components/Pagination.php';
 
 class FeedbacksController
 {
-    public function actionView()
+    public function actionView($page = 1)
     {
-        require_once('./views/feedbacks/view.php');
-        return true;
-    }
+        $feedbacks = Feedback::getFeedbacksList(3, $page);
 
-    public function actionSuccess()
-    {
-        require_once('./views/feedbacks/success.php');
+        $total = Feedback::getTotalCountOfFeedbacks();
+
+        $pagination = new Pagination($total, $page, 3, 'page-');
+
+        require_once('./views/feedbacks/view.php');
         return true;
     }
 

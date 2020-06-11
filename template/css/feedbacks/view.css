@@ -1,0 +1,15 @@
+.card {
+    margin: auto;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    min-height: 25rem;
+    overflow: auto;
+}
+
+.card-text {
+    margin-bottom: 0.5rem;
+}
+
+nav {
+    margin: auto;
+}
