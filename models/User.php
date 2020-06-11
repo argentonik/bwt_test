@@ -9,13 +9,13 @@ class User
         $sql = 'INSERT INTO users (firstName, lastName, email, gender_id, birthday) '
             .'VALUES (:firstName, :lastName, :email, :gender_id, :birthday)';
 
-        $genders = require_once('./models/Gender.php');
+        $birthday = $birthday ? $birthday : null;
 
         $result = $db->prepare($sql);
         $result->bindParam(':firstName', $firstName, PDO::PARAM_STR);
         $result->bindParam(':lastName', $lastName, PDO::PARAM_STR);
         $result->bindParam(':email', $email, PDO::PARAM_STR);
-        $result->bindParam(':gender_id', $genders[$gender], PDO::PARAM_INT);
+        $result->bindParam(':gender_id', $gender, PDO::PARAM_INT);
         $result->bindParam(':birthday', $birthday, PDO::PARAM_STR);
 
         $r = $result->execute();
@@ -96,8 +96,8 @@ class User
 
     public static function hasErrorsDate($dateStr) {
         // format yyyy-mm-dd
-        return $dateStr &&
-            preg_match("/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/", $dateStr) ? false :
+        return !$dateStr ||
+            ($dateStr && preg_match("/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/", $dateStr)) ? false :
             'Введите дату в формате дд.мм.гггг';
     }
 }

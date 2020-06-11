@@ -38,9 +38,9 @@
                         <div class="form-group col-md-6">
                             <label>Пол</label>
                             <select id="inputState" name="gender" class="form-control"
-                                    value="<?php echo $gender; ?>">
-                                <option>Мужской</option>
-                                <option>Женский</option>
+                                    selected="<?php echo $gender ? $gender : 1; ?>">
+                                <option value="1" <?php $gender == 1 ? print 'selected' : ''; ?>>Мужской</option>
+                                <option value="2" <?php $gender == 2 ? print 'selected' : ''; ?>>Женский</option>
                             </select>
                         </div>
                         <div class="form-group col-md-6">

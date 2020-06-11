@@ -32,9 +32,9 @@ class WeatherController
             $hoursArray = self::HOURS_ARRAY;
 
             // parse and prepare data
-            $date = $content->find('.tabs._center > div .date')[0]->text();
-            $nowTemperature = $content->find('.js_meas_container.temperature.tab-weather__value > span')->text();
-            $nowWeather = $content->find('.tab.tablink.tooltip')->attr('data-text');
+            $date = trim($content->find('.tabs._center > div .date')[0]->text());
+            $nowTemperature = trim($content->find('.js_meas_container.temperature.tab-weather__value > span')->text());
+            $nowWeather = trim($content->find('.tab.tablink.tooltip')->attr('data-text'));
 
             $weatherToHours = $this->prepareWeatherBlocks($content->find('.widget__row_icon span'));
             $temperaturToHours = $this->prepareTemperaturToHours($content);

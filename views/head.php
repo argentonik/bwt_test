@@ -27,19 +27,17 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarText">
-            <?php
+            <ul class="navbar-nav mr-auto">
+                <?php
                 if ($currentUser) {
-                    echo <<<EOL
-                        <ul class="navbar-nav mr-auto">
-                            <li class="nav-item">
-                                <a class="nav-link active" href="/feedbacks">Отзывы</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/feedbacks/create">Добавить отзыв</a>
-                            </li>
-                        </ul>
-EOL;
+                    echo '<li class="nav-item">
+                            <a class="nav-link" href="/feedbacks">Отзывы</a>
+                          </li>';
                 } ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="/feedbacks/create">Добавить отзыв</a>
+                </li>
+            </ul>
             <ul class="navbar-nav ml-auto">
                 <?php
                 if ($currentUser) {

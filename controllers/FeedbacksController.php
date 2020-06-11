@@ -13,13 +13,18 @@ class FeedbacksController
 
     public function actionView($page = 1)
     {
-        $feedbacks = Feedback::getFeedbacksList(3, $page);
+        if (User::checkLogged()) {
+            $feedbacks = Feedback::getFeedbacksList(3, $page);
 
-        $total = Feedback::getTotalCountOfFeedbacks();
+            $total = Feedback::getTotalCountOfFeedbacks();
 
-        $pagination = new Pagination($total, $page, 3, 'page-');
+            $pagination = new Pagination($total, $page, 3, 'page-');
 
-        require_once('./views/feedbacks/view.php');
+            require_once('./views/feedbacks/view.php');
+        } else {
+            header('HTTP/1.0 403 Forbidden');
+            require_once('./views/users/noRules.php');
+        }
         return true;
     }
 
