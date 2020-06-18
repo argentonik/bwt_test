@@ -4,7 +4,7 @@
 class User
 {
     public static function register($firstName, $lastName, $email, $gender, $birthday) {
-        $db = Db::getConnection();
+        $db = Db::getInstance()->getConnection();
 
         $sql = 'INSERT INTO users (firstName, lastName, email, gender_id, birthday) '
             .'VALUES (:firstName, :lastName, :email, :gender_id, :birthday)';
@@ -40,7 +40,7 @@ class User
     }
 
     public static function checkUserData($firstName, $email) {
-        $db = Db::getConnection();
+        $db = Db::getInstance()->getConnection();
 
         $sql = 'SELECT * FROM users WHERE firstName = :firstName AND email = :email';
 
@@ -61,7 +61,7 @@ class User
     }
 
     public static function isEmailExists($email) {
-        $db = Db::getConnection();
+        $db = Db::getInstance()->getConnection();
 
         $sql = 'SELECT COUNT(*) FROM users WHERE email = :email';
 

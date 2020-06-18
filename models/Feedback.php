@@ -4,7 +4,8 @@
 class Feedback
 {
     public static function saveFeedback($firstName, $email, $report) {
-        $db = Db::getConnection();
+        $db = Db::getInstance()->getConnection();
+
         $sql = 'INSERT INTO feedbacks (date, firstName, email, report) '
             . 'VALUES (:date, :firstName, :email, :report)';
 
@@ -22,7 +23,7 @@ class Feedback
     }
 
     public static function getFeedbacksList($limit, $offset) {
-        $db = Db::getConnection();
+        $db = Db::getInstance()->getConnection();
 
         $feedbacksList = array();
 
@@ -46,7 +47,7 @@ class Feedback
     }
 
     public static function getTotalCountOfFeedbacks() {
-        $db = Db::getConnection();
+        $db = Db::getInstance()->getConnection();
 
         $result = $db->query('SELECT count(id) AS count FROM feedbacks');
         $result->setFetchMode(PDO::FETCH_ASSOC);

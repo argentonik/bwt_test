@@ -3,13 +3,29 @@
 
 class Db
 {
-    public static function getConnection() {
+    private static $instance;
+    private $connection;
+
+    private function __construct() {
         $paramsPath = './config/db_params.php';
         $params = include($paramsPath);
 
         $dsn = "mysql:host={$params['host']};dbname={$params['dbname']}";
-        $db = new PDO($dsn, $params['user'], $params['password']);
+        $this->connection = new PDO($dsn, $params['user'], $params['password']);
+    }
 
-        return $db;
+    private function __clone() {}
+    private function __wakeup() {}
+
+    public static function getInstance() {
+        if (!self::$instance) {
+            self::$instance = new self;    
+        }
+        
+        return self::$instance;
+    }
+
+    public function getConnection() {
+        return $this->connection;
     }
 }
