@@ -1,5 +1,6 @@
 <?php
 
+namespace components;
 
 class Db
 {
@@ -11,7 +12,7 @@ class Db
         $params = include($paramsPath);
 
         $dsn = "mysql:host={$params['host']};dbname={$params['dbname']}";
-        $this->connection = new PDO($dsn, $params['user'], $params['password']);
+        $this->connection = new \PDO($dsn, $params['user'], $params['password']);
     }
 
     private function __clone() {}

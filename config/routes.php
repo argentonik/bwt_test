@@ -5,9 +5,9 @@ return array(
     'signIn' => '/user/signIn',
     'logout' => '/user/logout',
 
-    'feedbacks/create' => '/feedbacks/create',
-    'feedbacks/page-([0-9]+)' => '/feedbacks/view/$1',
-    'feedbacks' => '/feedbacks/view',
+    'feedback/create' => '/feedback/create',
+    'feedback/page-([0-9]+)' => '/feedback/view/$1',
+    'feedback' => '/feedback/view',
 
     '' => '/weather/view'
 );

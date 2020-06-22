@@ -1,14 +1,14 @@
 <?php
 
-// общие настройки
+use components\Router;
+
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
-// подсключение файлов системы
-require_once './components/Router.php';
-require_once './components/Db.php';
-require_once './models/User.php';
 
-// вызов роутера
+define('ROOT', dirname(__FILE__));
+require_once ROOT.'/vendor/autoload.php';
+require_once(ROOT.'/components/Autoload.php');
+
 $router = new Router();
 $router->run();

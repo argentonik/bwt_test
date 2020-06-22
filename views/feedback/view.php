@@ -1,5 +1,3 @@
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/views/head.php' ?>
-
 <div class="card" style="width: 40rem;">
     <div class="card-body">
         <?php
@@ -16,9 +14,3 @@
         <?php echo $pagination->get(); ?>
     </nav>
 </div>
-
-<script type="text/javascript">
-    loadCSS("/template/css/feedbacks/view.css");
-</script>
-
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/views/footer.php' ?>

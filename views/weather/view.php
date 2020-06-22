@@ -1,5 +1,3 @@
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/views/head.php' ?>
-
 <div class="page-content page-container" id="page-content">
     <div class="padding">
         <div class="container d-flex justify-content-center">
@@ -42,9 +40,6 @@
 </div>
 
 <script type="text/javascript">
-    loadCSS("template/css/weather/style.css");
     loadCSS('https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/3.6.95/css/materialdesignicons.css');
 </script>
-
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/views/footer.php' ?>
 

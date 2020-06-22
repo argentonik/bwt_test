@@ -1,5 +1,7 @@
 <?php
 
+namespace components;
+
 class Router {
     private $routes;
 
@@ -24,20 +26,16 @@ class Router {
 
                 $segments = explode('/', $internalRoute);
 
-                $controllerName = array_shift($segments).'Controller';
-                $controllerName = ucfirst($controllerName);
+                $parameters = [
+                    'controller' => array_shift($segments),
+                    'action' => array_shift($segments)
+                ];
 
-                $actionName = 'action'.ucfirst(array_shift($segments));
+                $controllerName = 'controllers\\' . ucfirst($parameters['controller'].'Controller');
+                $actionName = 'action'.ucfirst($parameters['action']);
 
-                $parameters = $segments;
-
-                $controllerFile = './controllers/'.$controllerName.'.php';
-                if (file_exists($controllerFile)) {
-                    include_once($controllerFile);
-                }
-
-                $controllerObject = new $controllerName;
-                $result = call_user_func_array(array($controllerObject, $actionName), $parameters);
+                $controllerObject = new $controllerName($parameters);
+                $result = call_user_func_array(array($controllerObject, $actionName), $segments);
 
                 if($result != null) {
                     break;

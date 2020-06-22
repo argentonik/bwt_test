@@ -1,5 +1,3 @@
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/views/head.php' ?>
-
 <div class="row justify-content-center">
     <div class="col-md-6">
         <div class="card">
@@ -46,9 +44,4 @@
     </div>
 </div>
 
-<script type="text/javascript">
-    loadCSS("/template/css/feedbacks/create.css");
-</script>
 <script src='https://www.google.com/recaptcha/api.js?hl=ru'></script>
-
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/views/footer.php' ?>

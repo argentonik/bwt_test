@@ -1,5 +1,3 @@
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/views/head.php' ?>
-
 <div class="container py-5">
     <div class="row">
         <div class="col-md-2 text-center">
@@ -15,7 +13,4 @@
 
 <script type="text/javascript">
     loadCSS("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css");
-    loadCSS("/template/css/user/noRules.css");
 </script>
-
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/views/footer.php' ?>

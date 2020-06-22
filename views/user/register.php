@@ -1,5 +1,3 @@
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/views/head.php' ?>
-
 <div class="row justify-content-center align-items-center">
     <div class="col-md-6">
         <div class="card">
@@ -63,9 +61,3 @@
         </div>
     </div>
 </div>
-
-<script type="text/javascript">
-    loadCSS("/template/css/user/registration.css");
-</script>
-
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/views/footer.php' ?>

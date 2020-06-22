@@ -1,4 +1,6 @@
-<?php $currentUser = User::checkLogged(); ?>
+<?php 
+$userModel = new models\User();
+$currentUser = $userModel->checkLogged(); ?>
 
 <!doctype html>
 <html lang="ru">
@@ -8,6 +10,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/template/css/style.css" />
+    <link rel="stylesheet" href="<?php echo $css; ?>" />
     <script
             src="https://code.jquery.com/jquery-3.5.1.min.js"
             integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
@@ -17,7 +20,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
             integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
     <script type="text/javascript" src="/template/js/script.js"></script>
-    <title>bwt_test</title>
+    <title>layout</title>
 </head>
 
 <body>
@@ -31,11 +34,11 @@
                 <?php
                 if ($currentUser) {
                     echo '<li class="nav-item">
-                            <a class="nav-link" href="/feedbacks">Отзывы</a>
+                            <a class="nav-link" href="/feedback">Отзывы</a>
                           </li>';
                 } ?>
                 <li class="nav-item">
-                    <a class="nav-link" href="/feedbacks/create">Добавить отзыв</a>
+                    <a class="nav-link" href="/feedback/create">Добавить отзыв</a>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
@@ -66,3 +69,7 @@ EOL;
         </div>
     </nav>
 
+    <?php echo $content ?>
+
+    </body>
+</html>

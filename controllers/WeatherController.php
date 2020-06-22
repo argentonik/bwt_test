@@ -1,10 +1,11 @@
 <?php
 
-require_once 'vendor/autoload.php';
+namespace controllers;
 
+use core\Controller;
 use Rct567\DomQuery\DomQuery;
 
-class WeatherController
+class WeatherController extends Controller
 {
     const URL_FOR_PARSE = 'http://www.gismeteo.ua/city/daily/5093/';
 
@@ -24,26 +25,23 @@ class WeatherController
         'снег' => 'mdi-weather-snowy'
     ];
 
+    public function __construct($route) {
+		parent::__construct($route);
+	}
+
     public function actionView() {
-        if (User::checkLogged()) {
-            $content = $this->getContent();
+        $content = $this->getContent();
 
-            // prepare base values
-            $hoursArray = self::HOURS_ARRAY;
+        $viewVars = [];
+        $viewVars['hoursArray'] = self::HOURS_ARRAY;
+        $viewVars['date'] = trim($content->find('.tabs._center > div .date')[0]->text());
+        $viewVars['nowTemperature'] = trim($content->find('.js_meas_container.temperature.tab-weather__value > span')->text());
+        $viewVars['nowWeather'] = trim($content->find('.tab.tablink.tooltip')->attr('data-text'));
 
-            // parse and prepare data
-            $date = trim($content->find('.tabs._center > div .date')[0]->text());
-            $nowTemperature = trim($content->find('.js_meas_container.temperature.tab-weather__value > span')->text());
-            $nowWeather = trim($content->find('.tab.tablink.tooltip')->attr('data-text'));
+        $viewVars['weatherToHours'] = $this->prepareWeatherBlocks($content->find('.widget__row_icon span'));
+        $viewVars['temperaturToHours'] = $this->prepareTemperaturToHours($content);
 
-            $weatherToHours = $this->prepareWeatherBlocks($content->find('.widget__row_icon span'));
-            $temperaturToHours = $this->prepareTemperaturToHours($content);
-
-            require_once('./views/weather/view.php');
-        } else {
-            header('HTTP/1.0 403 Forbidden');
-            require_once('./views/users/noRules.php');
-        }
+        $this->view->render($viewVars);
 
         return true;
     }
